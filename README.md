@@ -1,6 +1,7 @@
 # MUI Quick Admin
 
 ## Vite3 + React18 + Typescript4 + MUI + Tailwind CSS + (Eslint + Prettier) + (husky + commitlint) + Vitest
+### With Request & Auth
 
 * Material UI API: https://mui.com/material-ui/react-autocomplete/
 * Tailwind CSS API:
