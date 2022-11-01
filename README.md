@@ -26,3 +26,8 @@
 * Unit test: Vitest 3 + VitestUI + @vitest/coverage-c8 + @testing-library/react + @testing-library/jest-dom
 * mock
 * CI&CD: https://vercel.com/
+
+
+## Preview (By vercel CI&CD)
+Web Preview: https://muiqukadmin.vercel.app/qukadmin/
+Unit Test Coverage: https://muiqukadmin-unittest.vercel.app/
