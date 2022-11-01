@@ -12,8 +12,9 @@ export default defineConfig((mode: ConfigEnv) => {
   console.log('=====isDev=', isDev);
   console.log('=====MODE=', mode.mode);
   console.log('=====VITE_BASE_URL=', env.VITE_BASE_URL);
+  const baseUrl = '/qukadmin';
   return {
-    base: '/qukadmin/',
+    base: baseUrl,
     plugins: [
       react(),
       // vitePluginForArco(),
@@ -58,7 +59,7 @@ export default defineConfig((mode: ConfigEnv) => {
       minify: 'terser',
       // chunk 大小警告的限制
       chunkSizeWarningLimit: 2000,
-      outDir: 'dist'
+      outDir: 'dist' + baseUrl
     },
     css: {
       // preprocessorOptions: {
