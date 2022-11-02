@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build --mode production",
     "preview": "vite preview --mode staging",
-    "install:husky": "husky install",
     "lint:eslint": "eslint \"**/*.{jsx,js,tsx,ts}\" --fix",
     "lint:style": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
@@ -15,7 +14,8 @@
     "format": "prettier-eslint 'src/**/*.{jsx,js,tsx,ts}' --write",
     "test": "vitest --config vitest.config.ts",
     "coverage": "vitest run --coverage",
-    "start:testui": "vitest --ui"
+    "start:testui": "vitest --ui",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

@@ -6,15 +6,16 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig((mode: ConfigEnv) => {
-  const env = loadEnv(mode.mode, process.cwd());
+  // const env = loadEnv(mode.mode, process.cwd());
 
   const isDev = mode.mode === 'development';
-  console.log('=====isDev=', isDev);
-  console.log('=====MODE=', mode.mode);
-  console.log('=====VITE_BASE_URL=', env.VITE_BASE_URL);
+  // console.log('=====isDev=', isDev);
+  // console.log('=====MODE=', mode.mode);
+  // console.log('=====VITE_BASE_URL=', env.VITE_BASE_URL);
   const baseUrl = '/qukadmin';
   return {
     base: baseUrl,
+    envDir: 'env',
     plugins: [
       react(),
       // vitePluginForArco(),
