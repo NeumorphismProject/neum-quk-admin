@@ -30,5 +30,5 @@
 
 
 ## Preview (By vercel CI&CD)
-Web Preview: https://muiqukadmin.vercel.app/qukadmin/
-Unit Test Coverage: https://muiqukadmin-unittest.vercel.app/
+* Web Preview: https://muiqukadmin.vercel.app/qukadmin/
+* Unit Test Coverage: https://muiqukadmin-unittest.vercel.app/

@@ -7,14 +7,14 @@ import { Theme, NeumorphismType, NeumorphismColorType } from '@/theme';
 const NeumorphismWrapper = styled(Grid)(
   ({
     theme,
-    colorType,
+    colortype,
     type
   }: {
     theme?: Theme;
-    colorType: NeumorphismColorType;
+    colortype: NeumorphismColorType;
     type: NeumorphismType;
   }) => ({
-    ...theme!.neumorphism[colorType][type]
+    ...theme!.neumorphism[colortype][type]
   })
 );
 
@@ -33,7 +33,7 @@ export default function NeumorphismPannel({
   children
 }: INeumorphismPannelProps) {
   return (
-    <NeumorphismWrapper className={className} sx={sx} colorType={colorType} type={type}>
+    <NeumorphismWrapper className={className} sx={sx} colortype={colorType} type={type}>
       {children}
     </NeumorphismWrapper>
   );

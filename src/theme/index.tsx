@@ -8,21 +8,17 @@ import {
   createTheme,
   StyledEngineProvider
 } from '@mui/material/styles';
-//
+// theme overrides
 import palette from './palette';
 import typography from './typography';
 import shadows, { customShadows } from './shadows';
 import neumorphism from './neumorphism';
+// components overrides
+import componentsOverride from './overrides';
 
 export type { NeumorphismType, NeumorphismColorType } from './neumorphism';
 
-export interface Theme extends Omit<MUITheme, 'palette' | 'shadows' | 'typography'> {
-  palette: typeof palette;
-  shadows: typeof shadows;
-  typography: typeof typography;
-  neumorphism: typeof neumorphism;
-}
-
+export * from './types/Theme';
 // ----------------------------------------------------------------------
 
 export default function ThemeProvider({ children }: any) {
@@ -39,6 +35,7 @@ export default function ThemeProvider({ children }: any) {
   );
 
   const theme = createTheme(themeOptions as any);
+  theme.components = componentsOverride(theme as any);
 
   return (
     <StyledEngineProvider injectFirst>

@@ -62,6 +62,6 @@ export const customShadows = createCustomShadow(LIGHT_MODE);
 
 const muiShadows = createShadow(LIGHT_MODE);
 
-const shadows = { ...muiShadows, customShadows: customShadows };
+const shadows = { ...muiShadows };
 
 export default shadows;
