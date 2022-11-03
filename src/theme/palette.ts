@@ -2,7 +2,7 @@ import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-function createGradient(color1, color2) {
+function createGradient(color1: string, color2: string) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
 
@@ -32,7 +32,7 @@ const PRIMARY = {
   bright: '#2499ef',
   lighter: '#D1E9FC',
   light: '#76B0F1',
-  main: '#2065D1',
+  main: GREY[100], // '#2065D1',
   dark: '#103996',
   darker: '#061B64',
   contrastText: '#fff'
@@ -114,8 +114,8 @@ const palette = {
   chart: CHART_COLORS,
   divider: GREY[500_24],
   text: {
-    primary: GREY[800],
-    secondary: GREY[600],
+    primary: GREY[100],
+    secondary: GREY[400],
     disabled: GREY[500],
     background: alpha(PRIMARY.light, 0.2)
   },

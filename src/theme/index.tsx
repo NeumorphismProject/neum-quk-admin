@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 // material
 import { CssBaseline } from '@mui/material';
 import {
+  Theme as MUITheme,
   ThemeProvider as MUIThemeProvider,
   createTheme,
   StyledEngineProvider
@@ -10,14 +11,24 @@ import {
 //
 import palette from './palette';
 import typography from './typography';
-import componentsOverride from './overrides';
 import shadows, { customShadows } from './shadows';
+import neumorphism from './neumorphism';
+
+export type { NeumorphismType, NeumorphismColorType } from './neumorphism';
+
+export interface Theme extends Omit<MUITheme, 'palette' | 'shadows' | 'typography'> {
+  palette: typeof palette;
+  shadows: typeof shadows;
+  typography: typeof typography;
+  neumorphism: typeof neumorphism;
+}
 
 // ----------------------------------------------------------------------
 
-export default function ThemeProvider({ children }) {
+export default function ThemeProvider({ children }: any) {
   const themeOptions = useMemo(
     () => ({
+      neumorphism,
       palette,
       shape: { borderRadius: 8 },
       typography,
@@ -27,8 +38,7 @@ export default function ThemeProvider({ children }) {
     []
   );
 
-  const theme = createTheme(themeOptions);
-  theme.components = componentsOverride(theme);
+  const theme = createTheme(themeOptions as any);
 
   return (
     <StyledEngineProvider injectFirst>

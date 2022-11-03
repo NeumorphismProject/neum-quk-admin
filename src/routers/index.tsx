@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 // import { IconDashboard, IconCodeSquare, IconBug, IconMenu } from '@arco-design/web-react/icon';
 
+import LinearProgress from '@mui/material/LinearProgress';
 import LayoutPage from '@/components/Layout';
 import EmptyLayout from '@/components/EmptyLayout';
 // import MultiTwoLayout from '@/views/multi/two/layout';
@@ -10,7 +11,7 @@ import EmptyLayout from '@/components/EmptyLayout';
 import RequireAuth from '@/components/Auth';
 
 // const load = (children: any) => <Suspense fallback={<LoadingComponent />}>{children}</Suspense>;
-const load = (children: any) => <Suspense fallback={<>loading</>}>{children}</Suspense>;
+const load = (children: any) => <Suspense fallback={<LinearProgress />}>{children}</Suspense>;
 
 const Login = lazy(() => import('@/views/Login'));
 const Home = lazy(() => import('@/views/Home'));

@@ -155,5 +155,6 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/no-unknown-property': 0,
     'react-hooks/exhaustive-deps': 0, // react hooks 是否允许带空数组
+    '@typescript-eslint/no-non-null-assertion': 0
   }
 };
