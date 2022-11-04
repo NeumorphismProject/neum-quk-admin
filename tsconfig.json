@@ -23,12 +23,9 @@
   "include": [
     "vite.config.ts",
     "vitest.config.ts",
-    ".eslintrc.cjs",
-    "tailwind.config.cjs",
-    "postcss.config.cjs",
     "src",
     "__tests__"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "*.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
