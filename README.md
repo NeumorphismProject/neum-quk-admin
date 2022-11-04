@@ -29,6 +29,10 @@
 * CI&CD: https://vercel.com/
 
 
+## why use lint-stage
+* It will just check file that is edited this time in lint-stage hooks.
+* So why use eslint in pre-push: I just want check all files before push.
+
 ## Preview (By vercel CI&CD)
 * Web Preview: https://muiqukadmin.vercel.app/qukadmin/
 * Unit Test Coverage: https://muiqukadmin-unittest.vercel.app/
