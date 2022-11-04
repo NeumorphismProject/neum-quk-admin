@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 import { GlobalContext } from '@/context';
-import ThemeProvider from './theme';
+import ThemeProvider, { Theme } from './theme';
 import RenderRouter from './routers';
 
 export default function App() {
@@ -11,14 +12,14 @@ export default function App() {
   const contextVal = { lang, setLang, theme, setTheme };
   const baseRoute = import.meta.env.BASE_URL;
   return (
-    <div className="w-screen h-screen">
-      <ThemeProvider>
-        <GlobalContext.Provider value={contextVal}>
-          <BrowserRouter basename={baseRoute}>
+    <ThemeProvider>
+      <GlobalContext.Provider value={contextVal}>
+        <BrowserRouter basename={baseRoute}>
+          <Grid className="w-screen h-screen">
             <RenderRouter />
-          </BrowserRouter>
-        </GlobalContext.Provider>
-      </ThemeProvider>
-    </div>
+          </Grid>
+        </BrowserRouter>
+      </GlobalContext.Provider>
+    </ThemeProvider>
   );
 }

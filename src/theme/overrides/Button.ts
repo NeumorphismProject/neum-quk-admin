@@ -8,7 +8,7 @@ export default function Button(theme: Theme) {
         root: {
           '&:hover': {
             // boxShadow: 'none'
-            ...theme.neumorphism.dark.convex
+            ...theme.neumorphism().dark.concave
           }
         },
         sizeLarge: {
@@ -23,11 +23,11 @@ export default function Button(theme: Theme) {
         },
         containedPrimary: {
           // boxShadow: theme.customShadows.primary
-          ...theme.neumorphism.dark.concave
+          ...theme.neumorphism().dark.convex
         },
         containedSecondary: {
           // boxShadow: theme.customShadows.secondary
-          ...theme.neumorphism.dark.concave
+          ...theme.neumorphism().dark.convex
         },
         outlinedInherit: {
           border: `1px solid ${theme.palette.grey[500_32]}`,

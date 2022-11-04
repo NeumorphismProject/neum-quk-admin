@@ -17,16 +17,6 @@ import { useNavigate } from 'react-router-dom';
 import { Theme } from '@/theme';
 import NeumorphismPannel from '@/components/NeumorphismPannel';
 
-const ImageGrid: any = styled(Grid)(() => ({
-  borderTopLeftRadius: '10px',
-  borderBottomLeftRadius: '10px'
-}));
-
-const FormGrid: any = styled(Grid)(() => ({
-  borderTopRightRadius: '10px',
-  borderBottomRightRadius: '10px'
-}));
-
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -63,14 +53,7 @@ export default function SignInSide() {
     >
       <NeumorphismPannel className="w-10/12 h-4/5" sx={{ margin: '0 auto' }}>
         <Grid className="w-full h-full flex">
-          <Grid
-            className="flex flex-col justify-center items-center"
-            sx={{ width: 600 }}
-            item
-            xs={false}
-            sm={4}
-            md={7}
-          >
+          <Grid className="hidden lg:flex-1 lg:flex lg:flex-col lg:justify-center lg:items-center">
             <NeumorphismPannel
               type="pressed"
               sx={{
@@ -90,7 +73,7 @@ export default function SignInSide() {
                 }
               >
                 <Image
-                  style={{ borderRadius: theme.neumorphism.borderRadius }}
+                  style={{ borderRadius: theme.neumorphism().borderRadius }}
                   src="https://picsum.photos/id/674/2000"
                   height="100%"
                   width="100%"
@@ -101,19 +84,22 @@ export default function SignInSide() {
             </NeumorphismPannel>
           </Grid>
           <NeumorphismPannel className="flex-1">
-            <FormGrid className="w-full">
+            <Grid className="w-full">
               <Box
                 sx={{
-                  my: 8,
+                  my: 4,
                   mx: 4,
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center'
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
-                </Avatar>
+                <NeumorphismPannel type="concave">
+                  <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <LockOutlinedIcon />
+                  </Avatar>
+                </NeumorphismPannel>
+
                 <Typography component="h1" variant="h5">
                   Sign in
                 </Typography>
@@ -166,7 +152,7 @@ export default function SignInSide() {
                   <Copyright sx={{ mt: 5 }} />
                 </Box>
               </Box>
-            </FormGrid>
+            </Grid>
           </NeumorphismPannel>
         </Grid>
       </NeumorphismPannel>

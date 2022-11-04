@@ -16,7 +16,7 @@ import neumorphism from './neumorphism';
 // components overrides
 import componentsOverride from './overrides';
 
-export type { NeumorphismType, NeumorphismColorType } from './neumorphism';
+export type { NeumorphismType, NeumorphismColorType, NeumorphismParams } from './neumorphism';
 
 export * from './types/Theme';
 // ----------------------------------------------------------------------
