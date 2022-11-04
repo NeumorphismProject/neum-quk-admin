@@ -138,13 +138,12 @@ export default function TreeMenu({
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       aria-labelledby="nested-list-subheader"
     >
-      {Array.isArray(menuData) &&
-        menuData.map((group: ISidebarMenuGroup, groupIndex: number) => {
+      {Array.isArray(menuData)
+        && menuData.map((group: ISidebarMenuGroup, groupIndex: number) => {
           const nodeGroupKey = `menugroup_${group.nodeId}`;
-          const renderGroups =
-            Array.isArray(group.children) &&
-            group.children.length > 0 &&
-            group.children.map((item: ISidebarMenuItem) => {
+          const renderGroups = Array.isArray(group.children)
+            && group.children.length > 0
+            && group.children.map((item: ISidebarMenuItem) => {
               const hasChildren = Array.isArray(item.children) && item.children.length > 0;
               const nodeKey = `menuitems_${item.nodeId}`;
               const open = _.get(itemOpenVal, item.nodeId, false);
@@ -174,8 +173,8 @@ export default function TreeMenu({
                         sx={(theme: Theme) => chipSx(theme, itemSelected)}
                       />
                     )}
-                    {hasChildren &&
-                      (open ? (
+                    {hasChildren
+                      && (open ? (
                         <ExpandLess
                           sx={(theme: Theme) => ({
                             color: itemSelected
@@ -204,8 +203,8 @@ export default function TreeMenu({
                         width: '90%'
                       })}
                     >
-                      {Array.isArray(item.children) &&
-                        item.children.map((child: ISidebarMenuItemChild) => {
+                      {Array.isArray(item.children)
+                        && item.children.map((child: ISidebarMenuItemChild) => {
                           const childSelected = selectedChildNodeId === child.nodeId;
                           const childInfoCount = getInfoCount(child.labelInfo);
                           return (

@@ -93,9 +93,9 @@ function MenuPop(props: MenuPopProps) {
       anchorOrigin={{ horizontal: 'right', vertical: 10 }}
     >
       <PopMenuBorder>
-        {curClickItem &&
-          Array.isArray(curClickItem.children) &&
-          curClickItem.children.map((child: ISidebarMenuItemChild) => {
+        {curClickItem
+          && Array.isArray(curClickItem.children)
+          && curClickItem.children.map((child: ISidebarMenuItemChild) => {
             const childSelected = child.nodeId === selectedMenuNodeId;
             const childInfoCount = getInfoCount(child.labelInfo);
             return (
@@ -211,13 +211,12 @@ export default function ListPopMenu({
   return (
     <GroupWrapper>
       <List component="nav" aria-label="Device settings">
-        {Array.isArray(menuData) &&
-          menuData.map((group: ISidebarMenuGroup, groupIndex: number) => {
+        {Array.isArray(menuData)
+          && menuData.map((group: ISidebarMenuGroup, groupIndex: number) => {
             const nodeGroupKey = `menuicongroup_${group.nodeId}`;
 
-            const renderItems =
-              group.children.length > 0 &&
-              group.children.map((item: ISidebarMenuItem) => {
+            const renderItems = group.children.length > 0
+              && group.children.map((item: ISidebarMenuItem) => {
                 const hasChildren = Array.isArray(item.children) && item.children.length > 0;
                 const itemSelected = selectedNodeId === item.nodeId;
                 const nodeKey = `menuiconitems_${item.nodeId}`;

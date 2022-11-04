@@ -14,7 +14,6 @@ module.exports = {
     'airbnb/hooks',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     'plugin:tailwindcss/recommended'
   ],
   overrides: [],
@@ -24,7 +23,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json'
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier', 'tailwindcss'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'tailwindcss'],
   rules: {
     strict: 'off',
     eqeqeq: 2, // 使用全等 === 不能使用==
@@ -83,7 +82,7 @@ module.exports = {
     'no-undef': 1, // 不能有未定义的变量
     'no-use-before-define': 2, // 未定义前不能使用
     'comma-dangle': ['error', 'never'], // 取消结尾逗号
-
+    '@typescript-eslint/comma-dangle': ['error', 'never'], // 取消结尾逗号
     camelcase: 0, // 强制驼峰法命名
     'object-curly-newline': [
       'error',

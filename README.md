@@ -1,7 +1,12 @@
-# MUI Quick Admin
+# Neumorphism MUI Quick Admin (Working on deving...)
 
-## Vite3 + React18 + Typescript4 + MUI + Tailwind CSS + (Eslint + Prettier) + (husky + commitlint) + Vitest
-### With Request & Auth
+## Preview
+
+* Web Preview: https://muiqukadmin.vercel.app/qukadmin/
+<img src="https://for-assets.vercel.app/NMUIqukAdmin/login.png" alt="image" width="500px" height="300px" />
+
+## Vite3 + React18 + Typescript4 + MUI + Tailwind CSS + (Eslint + stylelint) + (husky + lint-stage) + Vitest
+* (With Request & Auth)
 
 * Material UI API: https://mui.com/material-ui/react-autocomplete/
 * Tailwind CSS API:
@@ -21,7 +26,7 @@
 * Vite 3: include .env
 * State Mangement: Redux-Toolkit
 * Interal Language: I18n
-* Lint: eslint + stylelint + prettierrc
+* Lint: eslint + stylelint
 * git hooks: husky
 * git commit formatter: commitlint
 * Unit test: Vitest 3 + VitestUI + @vitest/coverage-c8 + @testing-library/react + @testing-library/jest-dom

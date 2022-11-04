@@ -1,7 +1,6 @@
 {
   "**/*.{ts,tsx,js,jsx}": [
-    "eslint '**/*.{jsx,js,tsx,ts}' --fix",
-    "prettier-eslint '**/*.{jsx,js,tsx,ts}' --write"
+    "eslint '**/*.{jsx,js,tsx,ts}' --fix"
   ],
   "**/*.css": [
     "stylelint '**/*.{vue,less,postcss,css,scss}' --fix"
