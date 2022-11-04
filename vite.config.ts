@@ -14,7 +14,7 @@ export default defineConfig((mode: ConfigEnv) => {
   // console.log('=====VITE_BASE_URL=', env.VITE_BASE_URL);
   const baseUrl = '/qukadmin';
   return {
-    base: baseUrl,
+    base: `${baseUrl}/`,
     envDir: 'env',
     plugins: [
       react(),
@@ -60,7 +60,7 @@ export default defineConfig((mode: ConfigEnv) => {
       minify: 'terser',
       // chunk 大小警告的限制
       chunkSizeWarningLimit: 2000,
-      outDir: 'dist' + baseUrl
+      outDir: `dist${baseUrl}`
     },
     css: {
       // preprocessorOptions: {
