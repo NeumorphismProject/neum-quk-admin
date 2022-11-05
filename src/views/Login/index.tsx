@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { Theme, getColorModeByThemeMode, ColorModeContext } from '@/theme';
 import NeumorphismPannel from '@/components/NeumorphismPannel';
-import ThemeModeSwitch from './ThemeModeSwitch';
+import ThemeModeSwitch from '@/components/ThemeModeSwitch';
 
 function Copyright(props: any) {
   return (
