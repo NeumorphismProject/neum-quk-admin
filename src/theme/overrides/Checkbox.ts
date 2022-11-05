@@ -11,6 +11,9 @@ export default function Checkbox() {
             ...neuObj.convex,
             '&:hover': {
               ...neuObj.concave
+            },
+            '&.Mui-checked': {
+              color: theme.palette.common.white
             }
           };
         }

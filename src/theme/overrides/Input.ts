@@ -2,47 +2,17 @@ import { Theme } from '@/theme/types/Theme';
 
 export default function Input() {
   return {
-    MuiInputBase: {
+    MuiTextField: {
       styleOverrides: {
         root: ({ theme }: { theme: Theme }) => ({
           '&.Mui-disabled': {
             '& svg': { color: theme.palette.text.disabled }
-          }
-        }),
-        input: ({ theme }: { theme: Theme }) => ({
-          '&::placeholder': {
-            opacity: 1,
-            color: theme.palette.text.disabled
-          }
-        })
-      }
-    },
-    MuiInput: {
-      styleOverrides: {
-        underline: ({ theme }: { theme: Theme }) => ({
-          '&:before': {
-            borderBottomColor: theme.palette.grey[500_56]
-          }
-        })
-      }
-    },
-    MuiFilledInput: {
-      styleOverrides: {
-        root: ({ theme }: { theme: Theme }) => ({
-          backgroundColor: theme.palette.grey[500_12],
-          '&:hover': {
-            backgroundColor: theme.palette.grey[500_16]
           },
           '&.Mui-focused': {
-            backgroundColor: theme.palette.action.focus
+            borderColor: 'green'
           },
-          '&.Mui-disabled': {
-            backgroundColor: theme.palette.action.disabledBackground
-          }
-        }),
-        underline: ({ theme }: { theme: Theme }) => ({
-          '&:before': {
-            borderBottomColor: theme.palette.grey[500_56]
+          '& label.Mui-focused': {
+            color: theme.palette.common.white
           }
         })
       }
@@ -50,11 +20,10 @@ export default function Input() {
     MuiOutlinedInput: {
       styleOverrides: {
         root: ({ theme }: { theme: Theme }) => ({
-          borderColor: '#fff',
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.grey[500_32]
+            borderColor: `${theme.palette.grey[100]} !important`
           },
-          '&.Mui-disabled': {
+          '& .Mui-disabled': {
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: theme.palette.action.disabledBackground
             }
