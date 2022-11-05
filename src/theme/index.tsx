@@ -12,7 +12,7 @@ import { ThemeMode } from './types/Theme';
 // theme overrides
 import palette from './palette';
 import typography from './typography';
-import shadows, { customShadows } from './shadows';
+import shadows from './shadows';
 import neumorphism from './neumorphism';
 // components overrides
 import componentsOverride from './overrides';
@@ -46,14 +46,10 @@ export default function ThemeProvider({ children }: any) {
       shape: { borderRadius: 8 },
       typography,
       shadows,
-      customShadows,
       components: componentsOverride()
     } as any),
     [mode]
   );
-
-  // const theme = createTheme(themeOptions as any);
-  // theme.components = componentsOverride(theme as any) as any;
 
   return (
     <StyledEngineProvider injectFirst>

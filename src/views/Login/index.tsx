@@ -51,7 +51,7 @@ export default function SignInSide() {
     <Grid
       container
       className="h-full flex-col justify-center"
-      sx={[(theme: Theme) => ({ backgroundColor: theme.palette.primary[getColorModeByThemeMode({ theme })] })] as any}
+      sx={[(theme: Theme) => ({ backgroundColor: theme.palette.primary[getColorModeByThemeMode({ theme })] })]}
     >
       <ThemeModeSwitch />
       <NeumorphismPannel className="w-10/12 h-4/5" sx={{ margin: '0 auto' }}>
@@ -72,11 +72,11 @@ export default function SignInSide() {
                       width: '100%',
                       padding: theme.spacing(2)
                     })
-                  ] as any
+                  ]
                 }
               >
                 <Image
-                  style={{ borderRadius: theme.neumorphism().borderRadius }}
+                  style={{ borderRadius: theme.neumorphism!().borderRadius }}
                   src="https://picsum.photos/id/674/2000"
                   height="100%"
                   width="100%"

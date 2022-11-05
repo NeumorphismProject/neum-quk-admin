@@ -27,7 +27,7 @@ export default function ThemeModeSwitch() {
             }
           }
         };
-      }] as any}
+      }]}
     >
       {text}
     </Button>

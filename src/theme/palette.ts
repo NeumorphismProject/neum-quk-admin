@@ -102,12 +102,6 @@ const CHART_COLORS = {
   red: ['#FF6C40', '#FF8F6D', '#FFBD98', '#FFF2D4']
 };
 
-// export interface CustomPalette extends Palette {
-//   grey: any
-//   gradients: any
-//   action: any
-//   chart: any
-// }
 const palette: any = {
   common: { black: '#000', white: '#fff' },
   primary: { ...PRIMARY },
