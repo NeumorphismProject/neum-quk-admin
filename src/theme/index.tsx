@@ -26,11 +26,10 @@ export const ColorModeContext = createContext({ toggleColorMode: () => { } });
 
 export default function ThemeProvider({ children }: any) {
   // get system theme type
-  // const mode: ThemeMode = 'light';
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   console.log('prefersDarkMode = ', prefersDarkMode);
 
-  const [mode, setMode] = useState<ThemeMode>('dark');
+  const [mode, setMode] = useState<ThemeMode>(prefersDarkMode ? 'dark' : 'light');
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
