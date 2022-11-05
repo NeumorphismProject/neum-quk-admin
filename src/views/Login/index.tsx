@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FormEvent, useCallback, useContext } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Image from 'mui-image';
@@ -12,8 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { Theme } from '@/theme';
+import { Theme, getColorModeByThemeMode, ColorModeContext } from '@/theme';
 import NeumorphismPannel from '@/components/NeumorphismPannel';
+import ThemeModeSwitch from './ThemeModeSwitch';
 
 function Copyright(props: any) {
   return (
@@ -28,9 +29,10 @@ function Copyright(props: any) {
 }
 
 export default function SignInSide() {
+  const colorMode = useContext(ColorModeContext);
   const theme: Theme = useTheme();
   const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -39,16 +41,19 @@ export default function SignInSide() {
     });
   };
 
-  const siginIn = React.useCallback(() => {
+  const siginIn = useCallback(() => {
     // navigate(menuRoutes.root.dashboard.path);
+    colorMode.toggleColorMode();
+    console.log('toggleColorMode');
   }, []);
 
   return (
     <Grid
       container
       className="h-full flex-col justify-center"
-      sx={[(theme: Theme) => ({ backgroundColor: theme.palette.primary.dark })] as any}
+      sx={[(theme: Theme) => ({ backgroundColor: theme.palette.primary[getColorModeByThemeMode({ theme })] })] as any}
     >
+      <ThemeModeSwitch />
       <NeumorphismPannel className="w-10/12 h-4/5" sx={{ margin: '0 auto' }}>
         <Grid className="w-full h-full flex">
           <Grid className="hidden lg:flex-1 lg:flex lg:flex-col lg:justify-center lg:items-center">
@@ -81,9 +86,10 @@ export default function SignInSide() {
               </Grid>
             </NeumorphismPannel>
           </Grid>
-          <NeumorphismPannel className="flex-1">
+          <NeumorphismPannel className="flex-1 flex flex-col justify-between">
             <Grid className="w-full">
               <Box
+                className="sm:mt-20"
                 sx={{
                   my: 4,
                   mx: 4,
@@ -98,7 +104,7 @@ export default function SignInSide() {
                   </Avatar>
                 </NeumorphismPannel>
 
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" sx={{ mt: 1 }}>
                   Sign in
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -123,7 +129,7 @@ export default function SignInSide() {
                     autoComplete="current-password"
                   />
                   <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
+                    control={<Checkbox value="remember" color="primary" sx={{ mr: 1 }} />}
                     label="Remember me"
                   />
                   <Button
@@ -135,7 +141,7 @@ export default function SignInSide() {
                   >
                     Sign In
                   </Button>
-                  <Grid container>
+                  <Grid container className="sm:mt-4">
                     <Grid item xs>
                       <Link href="#" variant="body2">
                         Forgot password?
@@ -147,10 +153,10 @@ export default function SignInSide() {
                       </Link>
                     </Grid>
                   </Grid>
-                  <Copyright sx={{ mt: 5 }} />
                 </Box>
               </Box>
             </Grid>
+            <Copyright sx={{ mb: 6 }} />
           </NeumorphismPannel>
         </Grid>
       </NeumorphismPannel>

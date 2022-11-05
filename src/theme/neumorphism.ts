@@ -1,17 +1,17 @@
+import { ThemeMode } from '@/theme/types/Theme';
+
 export type NeumorphismType = 'flat' | 'pressed' | 'convex' | 'concave';
-export type NeumorphismColorType = 'bright' | 'main' | 'dark';
+export type NeumorphismColorMode = ThemeMode;
 
 function pxToRem(value: number) {
   return `${value / 16}rem`;
 }
 const SHADOW_DISTANCE = '20px';
-const SHADOW_BLUR = '36px';
+const SHADOW_BLUR = '30px';
 const BORDERRADIUS = 50;
 const COMMON_BORDERRADIUS = (borderRadius: number) => pxToRem(borderRadius);
-const BRIGHT_COMMON_BOXSHADOW = (shadowDistance: string, shadowBlur: string) =>
-  `${shadowDistance} ${shadowDistance} ${shadowBlur} #b6cfd9,-${shadowDistance} -${shadowDistance} ${shadowBlur} #f6ffff`;
 const MAIN_COMMON_BOXSHADOW = (shadowDistance: string, shadowBlur: string) =>
-  `${SHADOW_DISTANCE} ${SHADOW_DISTANCE} ${shadowBlur} #1b56b2,-${shadowDistance} -${shadowDistance} ${shadowBlur} #2574f0`;
+  `${shadowDistance} ${shadowDistance} ${shadowBlur} #1b56b2,-${shadowDistance} -${shadowDistance} ${shadowBlur} #2574f0`;
 const DARK_COMMON_BOXSHADOW = (shadowDistance: string, shadowBlur: string) =>
   `${shadowDistance} ${shadowDistance} ${shadowBlur} #0e3080,-${shadowDistance} -${shadowDistance} ${shadowBlur} #1242ad`;
 
@@ -30,29 +30,7 @@ const neumorphism = (params?: NeumorphismParams) => {
   } = p;
   return {
     borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-    bright: {
-      flat: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#d6f3ff',
-        boxShadow: BRIGHT_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      pressed: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#d6f3ff',
-        boxShadow: `inset ${shadowDistance} ${shadowDistance} ${shadowBlur} #0e3080,inset -${shadowDistance} -${shadowDistance} ${shadowBlur} #1242ad`
-      },
-      convex: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        background: 'linear-gradient(145deg, #e5ffff, #c1dbe6);',
-        boxShadow: BRIGHT_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      concave: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        background: 'linear-gradient(145deg, #c1dbe6, #e5ffff)',
-        boxShadow: BRIGHT_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      }
-    },
-    main: {
+    light: {
       flat: {
         borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
         backgroundColor: '#2065D1',

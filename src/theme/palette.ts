@@ -1,4 +1,5 @@
-import { alpha } from '@mui/material/styles';
+import { alpha, Palette, TypeAction } from '@mui/material/styles';
+import { Color as MUIColor } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -6,6 +7,7 @@ function createGradient(color1: string, color2: string) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
 
+// export interface CustomColor extends MUIColor {}
 // SETUP COLORS
 const GREY = {
   0: '#FFFFFF',
@@ -32,7 +34,7 @@ const PRIMARY = {
   bright: '#2499ef',
   lighter: '#D1E9FC',
   light: '#76B0F1',
-  main: GREY[100], // '#2065D1',
+  main: '#2065D1', // GREY[100], // '#2065D1',
   dark: '#103996',
   darker: '#061B64',
   contrastText: '#fff'
@@ -100,9 +102,14 @@ const CHART_COLORS = {
   red: ['#FF6C40', '#FF8F6D', '#FFBD98', '#FFF2D4']
 };
 
-const palette = {
+// export interface CustomPalette extends Palette {
+//   grey: any
+//   gradients: any
+//   action: any
+//   chart: any
+// }
+const palette: any = {
   common: { black: '#000', white: '#fff' },
-  appBar: { backgroundColor: '#fff' },
   primary: { ...PRIMARY },
   secondary: { ...SECONDARY },
   info: { ...INFO },
@@ -116,10 +123,9 @@ const palette = {
   text: {
     primary: GREY[100],
     secondary: GREY[400],
-    disabled: GREY[500],
-    background: alpha(PRIMARY.light, 0.2)
+    disabled: GREY[500]
   },
-  background: { paper: '#fff', default: GREY[100], neutral: GREY[200] },
+  background: { paper: '#fff', default: GREY[100] },
   action: {
     active: GREY[600],
     hover: GREY[500_8],

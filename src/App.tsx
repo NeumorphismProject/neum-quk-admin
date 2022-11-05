@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { GlobalContext } from '@/context';
-import ThemeProvider, { Theme } from './theme';
+import ThemeProvider, { ColorModeContext } from './theme';
 import RenderRouter from './routers';
 
 export default function App() {
+  // const colorMode = useContext(ColorModeContext);
   const [lang, setLang] = useState('zh-CN');
   const [theme, setTheme] = useState('light');
 

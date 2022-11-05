@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
-import { SystemStyleObject } from '@mui/system';
 import Grid, { GridProps } from '@mui/material/Grid';
-import { Theme, NeumorphismType, NeumorphismColorType, NeumorphismParams } from '@/theme';
+import { Theme, getNeumorphismByThemeMode, NeumorphismType, NeumorphismColorMode, NeumorphismParams } from '@/theme';
 
 interface NeumorphismWrapperProps {
   theme?: Theme;
-  colortype: NeumorphismColorType;
+  thememode?: NeumorphismColorMode;
   type: NeumorphismType;
   shadowdistance?: string;
   shadowblur?: string;
@@ -15,27 +14,31 @@ interface NeumorphismWrapperProps {
 const NeumorphismWrapper = styled(Grid)(
   ({
     theme,
-    colortype,
+    thememode,
     type,
     shadowdistance,
     shadowblur,
     borderradiusval
-  }: NeumorphismWrapperProps) => ({
-    ...theme!.neumorphism({
+  }: NeumorphismWrapperProps) => {
+    const neumorphismParams = {
       shadowDistance: shadowdistance,
       shadowBlur: shadowblur,
       borderRadiusVal: borderradiusval
-    })[colortype][type]
-  })
+    };
+    const neuObj = getNeumorphismByThemeMode({ theme: theme!, neumorphismParams, mode: thememode });
+    return {
+      ...neuObj[type]
+    };
+  }
 );
 
 export interface INeumorphismPannelProps extends GridProps, NeumorphismParams {
-  colorType?: NeumorphismColorType;
+  colorMode?: NeumorphismColorMode;
   type?: NeumorphismType;
   children?: ReactNode;
 }
 export default function NeumorphismPannel({
-  colorType = 'dark',
+  colorMode,
   type = 'flat',
   shadowDistance,
   shadowBlur,
@@ -45,7 +48,7 @@ export default function NeumorphismPannel({
 }: INeumorphismPannelProps) {
   return (
     <NeumorphismWrapper
-      colortype={colorType}
+      thememode={colorMode}
       type={type}
       shadowdistance={shadowDistance}
       shadowblur={shadowBlur}

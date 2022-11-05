@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import { useState, useMemo, createContext } from 'react';
 // material
 import { CssBaseline } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import {
-  Theme as MUITheme,
   ThemeProvider as MUIThemeProvider,
   createTheme,
   StyledEngineProvider
 } from '@mui/material/styles';
+import { ThemeMode } from './types/Theme';
 // theme overrides
 import palette from './palette';
 import typography from './typography';
@@ -16,33 +17,53 @@ import neumorphism from './neumorphism';
 // components overrides
 import componentsOverride from './overrides';
 
-export type { NeumorphismType, NeumorphismColorType, NeumorphismParams } from './neumorphism';
+export type { NeumorphismType, NeumorphismColorMode, NeumorphismParams } from './neumorphism';
 
 export * from './types/Theme';
 // ----------------------------------------------------------------------
 
+export const ColorModeContext = createContext({ toggleColorMode: () => { } });
+
 export default function ThemeProvider({ children }: any) {
-  const themeOptions = useMemo(
+  // get system theme type
+  // const mode: ThemeMode = 'light';
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  console.log('prefersDarkMode = ', prefersDarkMode);
+
+  const [mode, setMode] = useState<ThemeMode>('dark');
+  const colorMode = useMemo(
     () => ({
-      neumorphism,
-      palette,
-      shape: { borderRadius: 8 },
-      typography,
-      shadows,
-      customShadows
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      }
     }),
     []
   );
 
-  const theme = createTheme(themeOptions as any);
-  theme.components = componentsOverride(theme as any);
+  const theme: any = useMemo(
+    () => createTheme({
+      neumorphism,
+      palette: { ...palette, mode },
+      shape: { borderRadius: 8 },
+      typography,
+      shadows,
+      customShadows,
+      components: componentsOverride()
+    } as any),
+    [mode]
+  );
+
+  // const theme = createTheme(themeOptions as any);
+  // theme.components = componentsOverride(theme as any) as any;
 
   return (
     <StyledEngineProvider injectFirst>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MUIThemeProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <MUIThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </MUIThemeProvider>
+      </ColorModeContext.Provider>
     </StyledEngineProvider>
   );
 }

@@ -1,16 +1,16 @@
 import { Theme, getNeumorphismByThemeMode } from '@/theme/types/Theme';
 
-export default function Button() {
+export default function Checkbox() {
   return {
-    MuiButton: {
+    MuiCheckbox: {
       styleOverrides: {
         root: ({ theme }: { theme: Theme }) => {
-          const neumorphismParams = { shadowDistance: '6px', shadowBlur: '6px' };
+          const neumorphismParams = { shadowDistance: '2px', shadowBlur: '2px' };
           const neuObj = getNeumorphismByThemeMode({ theme, neumorphismParams });
           return {
-            ...neuObj.flat,
+            ...neuObj.convex,
             '&:hover': {
-              ...neuObj.pressed
+              ...neuObj.concave
             }
           };
         }

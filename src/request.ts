@@ -1,7 +1,6 @@
 /**
  * @description axios请求封装
  */
-
 import axios from 'axios';
 // import { Message, Modal } from '@arco-design/web-react';
 import config from '@/config/net.config';
