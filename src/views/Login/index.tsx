@@ -15,6 +15,8 @@ import { useNavigate } from 'react-router-dom';
 import { Theme, getColorModeByThemeMode, ColorModeContext } from '@/theme';
 import NeumorphismPannel from '@/components/NeumorphismPannel';
 import ThemeModeSwitch from '@/components/ThemeModeSwitch';
+import LocaleSelector from '@/components/LocaleSelector';
+import { useLocale } from '@/locales';
 
 function Copyright(props: any) {
   return (
@@ -29,6 +31,7 @@ function Copyright(props: any) {
 }
 
 export default function SignInSide() {
+  const t = useLocale();
   const colorMode = useContext(ColorModeContext);
   const theme: Theme = useTheme();
   const navigate = useNavigate();
@@ -53,7 +56,10 @@ export default function SignInSide() {
       className="h-full flex-col justify-center"
       sx={[(theme: Theme) => ({ backgroundColor: theme.palette.primary[getColorModeByThemeMode({ theme })] })]}
     >
-      <ThemeModeSwitch />
+      <Grid className="w-60 absolute top-4 right-6 flex flex-row justify-between">
+        <LocaleSelector />
+        <ThemeModeSwitch />
+      </Grid>
       <NeumorphismPannel className="w-10/12 h-4/5" sx={{ margin: '0 auto' }}>
         <Grid className="w-full h-full flex">
           <Grid className="hidden lg:flex-1 lg:flex lg:flex-col lg:justify-center lg:items-center">
@@ -105,7 +111,7 @@ export default function SignInSide() {
                 </NeumorphismPannel>
 
                 <Typography component="h1" variant="h5" sx={{ mt: 1 }}>
-                  Sign in
+                  {t.loginPage.title}
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                   <TextField
@@ -113,7 +119,7 @@ export default function SignInSide() {
                     required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label={t.loginPage.accountLabel}
                     name="email"
                     autoComplete="email"
                     autoFocus
@@ -123,14 +129,14 @@ export default function SignInSide() {
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label={t.loginPage.pwdLabel}
                     type="password"
                     id="password"
                     autoComplete="current-password"
                   />
                   <FormControlLabel
                     control={<Checkbox value="remember" color="primary" sx={{ mr: 1 }} />}
-                    label="Remember me"
+                    label={t.loginPage.remember}
                   />
                   <Button
                     type="submit"
@@ -139,17 +145,17 @@ export default function SignInSide() {
                     sx={{ mt: 3, mb: 2 }}
                     onClick={siginIn}
                   >
-                    Sign In
+                    {t.loginPage.loginBtn}
                   </Button>
                   <Grid container className="sm:mt-4">
                     <Grid item xs>
                       <Link href="#" variant="body2">
-                        Forgot password?
+                        {t.loginPage.forgotPwd}
                       </Link>
                     </Grid>
                     <Grid item>
                       <Link href="#" variant="body2">
-                        No account? Sign Up
+                        {t.loginPage.noAccount}
                       </Link>
                     </Grid>
                   </Grid>

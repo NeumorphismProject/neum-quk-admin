@@ -2,6 +2,7 @@ import Button from './Button';
 import Checkbox from './Checkbox';
 import Input from './Input';
 import Link from './Link';
+import Menu from './Menu';
 
 // ----------------------------------------------------------------------
 
@@ -10,6 +11,7 @@ export default function ComponentsOverrides() {
     Button(),
     Checkbox(),
     Input(),
-    Link()
+    Link(),
+    Menu()
   );
 }

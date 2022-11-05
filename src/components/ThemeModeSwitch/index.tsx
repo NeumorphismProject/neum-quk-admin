@@ -12,7 +12,6 @@ export default function ThemeModeSwitch() {
   const text = `${theme.palette.mode} mode`;
   return theme.palette.mode === 'dark' ? (
     <Button
-      className="absolute top-4 right-6"
       variant="contained"
       onClick={colorMode.toggleColorMode}
       endIcon={<Brightness4Icon sx={iconSx} />}
@@ -33,7 +32,6 @@ export default function ThemeModeSwitch() {
     </Button>
   ) : (
     <Button
-      className="absolute top-4 right-6"
       variant="contained"
       onClick={colorMode.toggleColorMode}
       startIcon={<Brightness7Icon sx={iconSx} />}
