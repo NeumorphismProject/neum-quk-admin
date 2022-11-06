@@ -10,10 +10,8 @@ export const localeTextMap: { [lang in LocaleType]: string } = {
   'zh-CN': '简体中文',
   'en-US': 'English'
 };
-export const LocaleContext = createContext({
-  lang: 'zh_CN',
-  setLang: (params: LocaleType) => { }
-});
+export interface ILocaleContext { lang: string, setLang: (params: LocaleType) => void }
+export const LocaleContext = createContext<ILocaleContext>({} as any);
 
 export function useLocale(locale: any = null) {
   const { lang } = useContext(LocaleContext);

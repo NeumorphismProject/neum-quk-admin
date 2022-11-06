@@ -1,17 +1,24 @@
-import { useState, useContext, MouseEvent } from 'react';
-import { useTheme } from '@mui/material/styles';
+import { useState, useContext, MouseEvent, useEffect, useMemo } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Theme, ColorModeContext, getNeumorphismByThemeMode } from '@/theme';
-import { localeTextMap, defaultLang, LocaleType, useLocale, LocaleContext } from '@/locales';
+import { localeTextMap, defaultLang, LocaleType, LocaleContext } from '@/locales';
+
+function getNewLocales(curLang: string, localeTextMapSource: { [lang in LocaleType]: string }) {
+  let newLocalMap: any = { ...localeTextMapSource };
+  delete newLocalMap[curLang];
+  newLocalMap = { [curLang]: (localeTextMapSource as any)[curLang], ...newLocalMap };
+  return newLocalMap;
+}
 
 export default function LocaleSelector() {
-  // const t = useLocale();
   const { lang, setLang } = useContext(LocaleContext);
-  const [langText, setLangText] = useState<string>(localeTextMap[defaultLang]);
+  const [langText, setLangText] = useState<string>(getNewLocales(defaultLang, localeTextMap)[defaultLang]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const localeTexts = useMemo(() => getNewLocales(lang, localeTextMap), [lang]);
+
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -47,9 +54,9 @@ export default function LocaleSelector() {
           horizontal: 'left'
         }}
       >
-        {Object.keys(localeTextMap).map((lang: string) => (
-          <MenuItem key={lang} onClick={() => handleItemClick({ lang, langText: localeTextMap[lang as LocaleType] })}>
-            {localeTextMap[lang as LocaleType]}
+        {Object.keys(localeTexts).map((lang: string) => (
+          <MenuItem key={lang} onClick={() => handleItemClick({ lang, langText: localeTexts[lang as LocaleType] })}>
+            {localeTexts[lang as LocaleType]}
           </MenuItem>))}
       </Menu>
     </div>
