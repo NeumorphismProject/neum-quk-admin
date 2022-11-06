@@ -1,4 +1,5 @@
 import { ThemeMode } from '@/theme/types/Theme';
+import neumorphismBuild, { BORDERRADIUS, NeumorphismStyleParams } from './neumorphism/styleBuilder';
 
 export type NeumorphismType = 'flat' | 'pressed' | 'convex' | 'concave';
 export type NeumorphismColorMode = ThemeMode;
@@ -6,74 +7,30 @@ export type NeumorphismColorMode = ThemeMode;
 function pxToRem(value: number) {
   return `${value / 16}rem`;
 }
-const SHADOW_DISTANCE = '20px';
-const SHADOW_BLUR = '30px';
-const BORDERRADIUS = 50;
-const COMMON_BORDERRADIUS = (borderRadius: number) => pxToRem(borderRadius);
-const MAIN_COMMON_BOXSHADOW = (shadowDistance: string, shadowBlur: string) =>
-  `${shadowDistance} ${shadowDistance} ${shadowBlur} #1b56b2,-${shadowDistance} -${shadowDistance} ${shadowBlur} #2574f0`;
-const DARK_COMMON_BOXSHADOW = (shadowDistance: string, shadowBlur: string) =>
-  `${shadowDistance} ${shadowDistance} ${shadowBlur} #0e3080,-${shadowDistance} -${shadowDistance} ${shadowBlur} #1242ad`;
 
-export interface NeumorphismParams {
-  shadowDistance?: string;
-  shadowBlur?: string;
-  borderRadiusVal?: number;
+const lightColor = '#2065D1';
+const lightCss = neumorphismBuild({ color: lightColor });
+const darkColor = '#103996';
+const darkCss = neumorphismBuild({ color: darkColor });
+
+export interface NeumorphismParams extends Pick<NeumorphismStyleParams, 'shadowDistance' | 'shadowBlur' | 'borderRadiusVal'> {
 }
 
 const neumorphism = (params?: NeumorphismParams) => {
+  if (params && (Object.hasOwnProperty.call(params, 'shadowDistance') || Object.hasOwnProperty.call(params, 'shadowBlur'))) {
+    const { borderRadiusVal = BORDERRADIUS } = params;
+    return {
+      borderRadius: pxToRem(borderRadiusVal),
+      light: neumorphismBuild({ color: lightColor, ...params }),
+      dark: neumorphismBuild({ color: darkColor, ...params })
+    };
+  }
   const p = params || {};
-  const {
-    shadowDistance = SHADOW_DISTANCE,
-    shadowBlur = SHADOW_BLUR,
-    borderRadiusVal = BORDERRADIUS
-  } = p;
+  const { borderRadiusVal = BORDERRADIUS } = p;
   return {
-    borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-    light: {
-      flat: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#2065D1',
-        boxShadow: MAIN_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      pressed: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#2065D1',
-        boxShadow: `inset ${shadowDistance} ${shadowDistance} ${shadowBlur} #1b56b2,inset -${shadowDistance} -${shadowDistance} ${shadowBlur} #2574f0`
-      },
-      convex: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundImage: 'linear-gradient(145deg, #226ce0, #1d5bbc)',
-        boxShadow: MAIN_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      concave: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundImage: 'linear-gradient(145deg, #1d5bbc, #226ce0)',
-        boxShadow: MAIN_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      }
-    },
-    dark: {
-      flat: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#103996',
-        boxShadow: DARK_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      pressed: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        backgroundColor: '#103996',
-        boxShadow: `inset ${shadowDistance} ${shadowDistance} ${shadowBlur} #0e3080,inset -${shadowDistance} -${shadowDistance} ${shadowBlur} #1242ad`
-      },
-      convex: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        background: 'linear-gradient(145deg, #113da1, #0e3387)',
-        boxShadow: DARK_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      },
-      concave: {
-        borderRadius: COMMON_BORDERRADIUS(borderRadiusVal),
-        background: 'linear-gradient(145deg, #0e3387, #113da1)',
-        boxShadow: DARK_COMMON_BOXSHADOW(shadowDistance, shadowBlur)
-      }
-    }
+    borderRadius: pxToRem(borderRadiusVal),
+    light: lightCss,
+    dark: darkCss
   };
 };
 
