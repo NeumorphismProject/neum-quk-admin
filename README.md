@@ -40,3 +40,10 @@
 ## Preview (By vercel CI&CD)
 * Web Preview: https://muiqukadmin.vercel.app/qukadmin/
 * Unit Test Coverage: https://muiqukadmin-unittest.vercel.app/
+
+## Study From
+* https://github.com/adamgiebl/neumorphism
+* https://mui.com/store/?utm_source=docs&utm_medium=referral&utm_campaign=templates-store
+* https://github.com/hu-snail/arco-admin-template
+* https://github.com/limitless-dev/react-ts-vite-tailwind-i18n-starter
+
