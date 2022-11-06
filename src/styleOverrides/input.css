@@ -1,0 +1,43 @@
+/* overrides style of input when selected history */
+input:-webkit-autofill {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  animation: autofill-fix 1s infinite !important;
+  -webkit-text-fill-color: #fff;
+}
+
+/* 选择历史记录的文字颜色和背景颜色 */
+
+/* input:-webkit-autofill {
+  -webkit-animation: autofill-fix 1s infinite !important;
+  -webkit-text-fill-color: #fff;
+  -webkit-transition: background-color 50000s ease-in-out 0s !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+
+}
+
+[role=button],
+a,
+area,
+button,
+input:not([type=range]),
+label,
+select,
+summary,
+textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+input[type=number],
+input[type=password],
+input[type=text],
+textarea {
+  -webkit-appearance: none;
+} */
