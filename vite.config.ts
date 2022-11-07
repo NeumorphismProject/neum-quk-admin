@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv, ConfigEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-// import vitePluginForArco from '@arco-plugins/vite-react';
 import { viteMockServe } from 'vite-plugin-mock';
 import path from 'path';
 
