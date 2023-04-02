@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+     margin: 0;
+     padding: 0;
+    }
+  </style>
+  <style>
+    .wrapper{
+      position: fixed;
+      top: 200px;
+      bottom: 0;
+      width: 99vw;
+      border: 2px solid red;
+    }
+    .wrapper .title{
+      font-size: 32px;
+    }
+    .wrapper .content {
+      height: 100%;
+      border: 2px solid blue;
+    }
+    .wrapper .content .content-title {
+      font-size: 16px;
+    }
+    .wrapper .content .list-wrapper {
+      height: calc(100% - 65px);
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">
+      标题1
+    </div>
+    <div class="content">
+      <div class="content-title">
+        标题2
+      </div>
+      <div class="list-wrapper">
+
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  const listWrapperDom = document.querySelector('.list-wrapper')
+  listWrapperDom.innerHTML = '<div>--start--</div>'
+  for(let i=1; i<100; i+=1){
+    listWrapperDom.innerHTML = listWrapperDom.innerHTML + `<div>item_${i}</div>`
+  }
+  listWrapperDom.innerHTML = listWrapperDom.innerHTML + '<div>--end--</div>'
+</script>
+</html>
